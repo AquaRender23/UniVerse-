@@ -6,7 +6,7 @@ FLASHCARDS_FILE = "flashcards.json"
 
 
 def load_flashcards():
-    """Load flashcards from JSON or create file if it doesn't exist."""
+    """Load flashcards from JSON"""
     if not os.path.exists(FLASHCARDS_FILE):
         with open(FLASHCARDS_FILE, "w") as f:
             json.dump([], f)
@@ -23,18 +23,12 @@ def save_flashcards(flashcards):
 
 
 def add_flashcard(front,back):
-    #front = input("Front of card: ")
-    #back = input("Back of card: ")
-
     flashcards = load_flashcards()
     flashcards.append({"front": front, "back": back})
     save_flashcards(flashcards)
 
-    #print("Flashcard saved!\n")
-
-
 def delete_all_flashcards():
-    save_flashcards([])   # overwrite with empty list
-    #print("All flashcards have been deleted!\n")
+    save_flashcards([])   
+
 
 
