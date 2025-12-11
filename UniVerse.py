@@ -41,7 +41,7 @@ class TodoFrame(wx.Frame):
         self.task_list.Clear()
 
 
-# POMODORO TIMER (NO THREADING USED)
+# POMODORO TIMER 
 class PomodoroFrame(wx.Frame):
     def __init__(self):
         super().__init__(None, title="Pomodoro Timer", size=(600, 400))
@@ -69,21 +69,18 @@ class PomodoroFrame(wx.Frame):
 
         panel.SetSizer(vbox)
 
-        # Timer variables
         self.work_time = 25 * 60
         self.break_time = 5 * 60
         self.current_time = self.work_time
         self.is_break = False
 
-        # wx.Timer (replaces threading)
         self.timer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.update_timer, self.timer)
 
         self.Show()
 
-    # BUTTONS
     def start_timer(self, event):
-        self.timer.Start(1000)  # runs every 1 second
+        self.timer.Start(1000)  
 
     def stop_timer(self, event):
         self.timer.Stop()
@@ -94,7 +91,6 @@ class PomodoroFrame(wx.Frame):
         self.is_break = False
         self.update_display()
 
-    # TIMER LOGIC
     def update_timer(self, event):
         if self.current_time > 0:
             self.current_time -= 1
@@ -165,3 +161,4 @@ panel.SetSizer(elements)
 
 frame.Show()
 app.MainLoop()
+
